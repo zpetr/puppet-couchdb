@@ -1,0 +1,48 @@
+{
+  "name": "zpetr-couchdb",
+  "version": "1.0.0-beta",
+  "author": "zpetr",
+  "summary": "CouchDB installation and management",
+  "license": "Apache 2.0",
+  "source": "https://github.com/zpetr/puppet-couchdb",
+  "project_page": "https://github.com/zpetr/puppet-couchdb",
+  "issues_url": "https://github.com/zpetr/puppet-couchdb/issues",
+  "tags": ["couchdb"],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    },
+	{
+      "name": "puppetlabs-inifile",
+      "version_range": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "10.04",
+        "12.04",
+        "14.04"
+      ]
+    }
+  ]
+}
+
