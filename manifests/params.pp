@@ -15,6 +15,7 @@ class couchdb::params {
     $group                = 'couchdb'
     $root_group           = 'root'
 	$updater		  	  = 'yum'
+	$updater_options	  = '-y'
     $packages = [
 				'gcc',
 				'gcc-c++',
@@ -30,6 +31,7 @@ class couchdb::params {
     $group                = 'couchdb'
     $root_group           = 'root'
 	$updater		  	  = 'apt-get'
+	$updater_options	  = ''
     $packages = [
 				'help2man',
 				'make',

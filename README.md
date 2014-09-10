@@ -78,7 +78,157 @@ couchdb::db { "database_test": }
 ```
 ##Reference
 
-Documentation in progress...
+###Classes
+
+* `couchdb`: Download build scripts and verify dependencies.
+
+###Defines
+* `couchdb::instance`: Install one instance of CouchDB.
+* `couchdb::db`: Create a database.
+
+###Parameters
+
+####couchdb
+
+#####`manage_user`
+
+Manage specific user for CouchDB instance. If *false* root is used.
+
+- Value: boolean (true/false)
+- Default: *true*
+
+#####`manage_group`
+
+Manage specific group for CouchDB instance. If *false* root group is used.
+
+- Value: boolean (true/false)
+- Default: *true*
+
+#####`user`
+
+Specific user name for CouchDB instance. Used if manage_user = true.
+
+- Default: *couchdb*
+
+#####`group`
+
+Specific group name for CouchDB instance. Used if manage_group = true.
+
+- Default: *couchdb*
+
+#####`couchdb_src_dir`
+
+Folder where CouchDB source code will be downloaded.
+
+- Default: */usr/local/src/couchdb*
+
+####couchdb::instance
+
+#####`ref`
+
+Unique name of CouchDB instance.
+
+#####`version`
+
+Version of CouchDB to install (starting from 1.4.0)
+
+- Value
+    * *stable* / *latest* / *last* - Latest version
+    * *unstable* / *trunk* / *dev* - Current trunk version
+    * \*.\* - Install version: \*.*.0. Example: 1.5 
+    * \*.\*.\* - Version to install. Example: 1.4.0
+- Default: *stable*
+
+#####`dir`
+
+Directory for the CouchDB instance.
+
+- Default: /usr/local/couchdb.
+
+**NB!** Sub-folder with the ref name is automaticly added to this directory. See *ref2dir*
+
+#####`ref2dir`
+
+Add ref name as sub-folder of installation dir.
+
+- Value: boolean (true/false)
+- Default: *true*
+
+#####`start_on_boot`
+
+Start instance automaticly on node boot.
+
+- Value: boolean (true/false)
+- Default: *true*
+
+#####`bind`
+
+IP bind adress. CouchDB instance will be accessible only from this IP. Set to *0.0.0.0* to access CouchDB from any computer other than local.
+
+- Value: IP
+- Default: *0.0.0.0*
+
+#####`port`
+
+Instance port.
+
+- Default: 5984
+
+#####`www_auth`
+
+Enable Http-Authentication. 
+
+- Value: boolean (true/false)
+- Default: *false*
+
+#####`admin_login`
+
+If *www_auth* is setted to *true*, set admin user login to this parameter.
+
+- Default: *[not setted]*
+
+#####`admin_password`
+
+If *www_auth* is setted to *true*, set admin user password to this parameter.
+
+- Default: *[not setted]*
+
+#####`cors`
+
+Enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing "CORS wikipedia") on this instance. By enabling CORS functionality, a CouchDB instance can accept direct connections to protected DBs and instances, without the browser functionality being blocked due to the same origin constraint. 
+
+- Value: boolean (true/false)
+- Default: *false*
+
+#####`cors_origins`
+
+Domains than allowed to serve a data from this CouchDB instance.
+
+- Default: *
+
+#####`cors_headers`
+
+Restricted Accepted Headers
+
+- Default: *Access-Control-Allow-Headers,Content-Type,Authorization,Content-Length,X-Requested-With,Accept*
+
+####couchdb::db
+
+#####`dbname`
+
+Database name.
+
+#####`target`
+
+Instance target URL. If you protect instance by login/password, use URL in form: http(s)://login:password@URI:PORT
+
+- Default: http://127.0.0.1:5984
+
+#####`source`
+
+Source URL where this database will be replecated from.
+
+- Default: *[empty]*
 
 ##Limitations
 
@@ -89,6 +239,8 @@ This module has been tested on:
 	* 5
 	* 6
 	* 7
+* CentOS
+	* 6 
 * Debian
 	* 6
 	* 7

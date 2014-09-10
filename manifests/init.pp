@@ -15,10 +15,11 @@ class couchdb (
 	}
 	
 	exec { "packager-update":
-		command     => "/usr/bin/${::couchdb::params::updater} update",
+		command     => "/usr/bin/${::couchdb::params::updater} update ${::couchdb::params::updater_options}",
+		timeout		=> '1200'
 	}
 	
-	Exec["packager-update"] -> Package <| |>
+	Exec["packager-update"] -> Package[$::couchdb::params::packages] -> Exec["clone"]
 	
 	package { $::couchdb::params::packages:
 		ensure	=> 'installed',
@@ -65,9 +66,9 @@ class couchdb (
 		exec { 'submodule init':
 			cwd         => "${couchdb_src_dir}/build-couchdb",
 			environment => "HOME=${::root_home}",
-			command     => "git submodule init",
+			command     => "/usr/bin/git submodule init",
 			timeout     => '300',
-			provider	=> 'shell',
+			#provider	=> 'shell',
 			require		=> Exec['clone'],
 		}
 		exec { 'submodule update':
