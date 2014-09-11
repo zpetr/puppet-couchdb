@@ -17,6 +17,7 @@ class couchdb::params {
 	$updater		  	  = 'yum'
 	$updater_options	  = '-y'
     $packages = [
+				'git',
 				'gcc',
 				'gcc-c++',
 				'make',
@@ -33,6 +34,7 @@ class couchdb::params {
 	$updater		  	  = 'apt-get'
 	$updater_options	  = ''
     $packages = [
+				'git',
 				'help2man',
 				'make',
 				'gcc',
