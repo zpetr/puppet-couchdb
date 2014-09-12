@@ -105,13 +105,13 @@ define couchdb::instance (
 		false	=> $::ipaddress
 	}
 	$servicename = "couchdb-${ip}_${port}"
-	#file { "${install_dir}/etc/init.d/${servicename}":
+	#file { "${install_dir}/etc/${::couchdb::params::service_dir}/${servicename}":
 	#	ensure  => link,
-	#	target  => "${install_dir}/etc/init.d/couchdb",
+	#	target  => "${install_dir}/etc/${::couchdb::params::service_dir}/couchdb",
 	#	require	=> [Exec["couchdb-${ref}"],File["${install_dir}/etc/couchdb/local.ini"]],
 	#}
 	file_line { $servicename:
-		path	=> "${install_dir}/etc/init.d/couchdb",
+		path	=> "${install_dir}/etc/${::couchdb::params::service_dir}/couchdb",
 		line	=> "# Provides:          ${servicename}",
 		match	=> '^# Provides:',
 		require	=> [Exec["couchdb-${ref}"],File["${install_dir}/etc/couchdb/local.ini"]],
@@ -119,7 +119,7 @@ define couchdb::instance (
 	}
 	file { "/etc/init.d/${servicename}":
 		ensure  => link,
-		target  => "${install_dir}/etc/init.d/couchdb",
+		target  => "${install_dir}/etc/${::couchdb::params::service_dir}/couchdb",
 		require	=> [Exec["couchdb-${ref}"],File["${install_dir}/etc/couchdb/local.ini"]],
 	}
 	ini_setting { "${ref}-check_couchdb_user":

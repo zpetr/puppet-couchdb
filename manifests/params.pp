@@ -16,6 +16,7 @@ class couchdb::params {
     $root_group           = 'root'
 	$updater		  	  = 'yum'
 	$updater_options	  = '-y'
+	$service_dir		  = 'rc.d'
     $packages = [
 				'git',
 				'gcc',
@@ -33,6 +34,7 @@ class couchdb::params {
     $root_group           = 'root'
 	$updater		  	  = 'apt-get'
 	$updater_options	  = ''
+	$service_dir		  = 'init.d'
     $packages = [
 				'git',
 				'help2man',
