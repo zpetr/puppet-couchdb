@@ -28,6 +28,12 @@ class couchdb::params {
 				'rubygem-rake',
 				'ruby-rdoc',
 			]
+	$otp_options = "erl_checkout=\"tags/OTP-17.1\""
+	if $::operatingsystemmajrelease > 5 {
+		$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\" erl_cflags=\"-DOPENSSL_NO_EC=1\""
+	} else {
+		$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\""
+	}
   } elsif $::osfamily == 'Debian' {
     $user                 = 'couchdb'
     $group                = 'couchdb'
@@ -51,6 +57,8 @@ class couchdb::params {
 				'libcap2-bin',
 				'ed',
 			]
+	$otp_options = ""
+	$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\""	
   } else {
     fail("Class['couchdb::params']: Unsupported osfamily: ${::osfamily}")
   }

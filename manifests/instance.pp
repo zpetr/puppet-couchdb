@@ -58,6 +58,16 @@ define couchdb::instance (
 		}
 	}
 	
+	if type($version) == 'string' {
+		$otp_options = "${::couchdb::params::otp_options}"
+	} elsif $version < "1.2" {
+		fail("Couchdb::Instance[${ref}]: ${version} version support is not provided by this module")
+	} elsif $version < "1.4" {
+		$otp_options = "${::couchdb::params::otp_compability_options}"
+	} else {
+		$otp_options = "${::couchdb::params::otp_options}"
+	}
+	
 	if !defined(File[$dir]) {
 		file { $dir:
 			ensure	=> directory,
@@ -82,7 +92,7 @@ define couchdb::instance (
 	exec { "couchdb-${ref}":
 		cwd         => "${couchdb::couchdb_src_dir}/build-couchdb",
 		environment => "HOME=${::root_home}",
-		command		=> "rake ${git_option} install=${couchdb::couchdb_src_dir}/dependencies couchdb_build=${install_dir}" ,
+		command		=> "rake ${git_option} ${otp_options} install=${couchdb::couchdb_src_dir}/dependencies couchdb_build=${install_dir}" ,
 		timeout		=> 1800,
 		provider	=> 'shell',
 		require		=> Class['couchdb'],
