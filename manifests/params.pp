@@ -27,6 +27,8 @@ class couchdb::params {
 				'openssl-devel',
 				'rubygem-rake',
 				'ruby-rdoc',
+				'help2man',
+				'texinfo'
 			]
 	$otp_options = "erl_checkout=\"tags/OTP-17.1\""
 	if $::operatingsystemmajrelease > 5 {
