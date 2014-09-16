@@ -6,7 +6,7 @@ class couchdb::params {
   }
   
   $src_dir	= '/usr/local/src/couchdb'
-  $git_rep			= 'git://github.com/zpetr/build-couchdb.git'
+  $git_rep			= '-b ssl-ec git://github.com/zpetr/build-couchdb.git'
   $git_rep_recursive = false
   $couchdb_git		= 'git://git.apache.org/couchdb.git'
 

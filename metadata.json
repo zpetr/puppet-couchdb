@@ -1,6 +1,6 @@
 {
   "name": "zpetr-couchdb",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-rc1",
   "author": "zpetr",
   "summary": "CouchDB installation and management",
   "license": "Apache 2.0",
@@ -28,9 +28,17 @@
         "7"
       ]
     },
+	{
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    },
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
+		"5",
         "6",
         "7"
       ]
@@ -38,9 +46,9 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "10.04",
-        "12.04",
-        "14.04"
+		"9",
+        "10",
+        "11"
       ]
     }
   ]

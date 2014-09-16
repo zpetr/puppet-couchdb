@@ -237,8 +237,11 @@ This module has been tested on:
 * RedHat Enterprise Linux
 	* 4
 	* 5
+	* 6
+	* 7
 * CentOS
 	* 5 
+	* 6
 * Debian
 	* 5 
 	* 6
