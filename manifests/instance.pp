@@ -39,19 +39,15 @@ define couchdb::instance (
 	case $version {
 		'stable','latest','last': {
 			$git_option = ''
-			#$install_tag_dir = 'stable'
 		}
 		'unstable','trunk','dev': {
 			$git_option = "git=\"${::couchdb::params::couchdb_git} trunk\""
-			#$install_tag_dir = 'trunk'
 		}
 		/(\d).(\d).(\d)/: {
 			$git_option = "git=\"${::couchdb::params::couchdb_git} tags/${version}\""
-			#$install_tag_dir = $version
 		}
 		/(\d).(\d)/: {
 			$git_option = "git=\"${::couchdb::params::couchdb_git} tags/${version}.0\""
-			#$install_tag_dir = "${version}.0"
 		}
 		default: {
 			fail("Couchdb::Instance[${ref}]: version ${version} is not a correct version number")
@@ -73,11 +69,7 @@ define couchdb::instance (
 			ensure	=> directory,
 		}
 	}
-	#if !defined(File["${couchdb::couchdb_src_dir}/dependencies/${install_tag_dir}"]) {
-	#	file { "${couchdb::couchdb_src_dir}/dependencies/${install_tag_dir}":
-	#		ensure	=> directory,
-	#	}
-	#}
+
 	if !defined(File[$install_dir]) {
 		file { $install_dir:
 			ensure	=> directory,
@@ -115,11 +107,6 @@ define couchdb::instance (
 		false	=> $::ipaddress
 	}
 	$servicename = "couchdb-${ip}_${port}"
-	#file { "${install_dir}/etc/${::couchdb::params::service_dir}/${servicename}":
-	#	ensure  => link,
-	#	target  => "${install_dir}/etc/${::couchdb::params::service_dir}/couchdb",
-	#	require	=> [Exec["couchdb-${ref}"],File["${install_dir}/etc/couchdb/local.ini"]],
-	#}
 	file_line { $servicename:
 		path	=> "${install_dir}/etc/${::couchdb::params::service_dir}/couchdb",
 		line	=> "# Provides:          ${servicename}",
