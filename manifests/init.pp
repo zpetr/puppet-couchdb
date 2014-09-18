@@ -68,7 +68,6 @@ class couchdb (
 			environment => "HOME=${::root_home}",
 			command     => "/usr/bin/git submodule init",
 			timeout     => '300',
-			#provider	=> 'shell',
 			require		=> Exec['clone'],
 		}
 		exec { 'submodule update':
