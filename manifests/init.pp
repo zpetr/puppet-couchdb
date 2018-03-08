@@ -20,9 +20,11 @@ class couchdb (
 	}
 	
 	Exec["packager-update"] -> Package[$::couchdb::params::packages] -> Exec["clone"]
-	
-	package { $::couchdb::params::packages:
-		ensure	=> 'installed',
+
+	$::couchdb::params::packages.each |String $pkg|{
+        	if !defined(Package[$pkg]) {
+			package { $pkg: ensure	=> 'installed' }
+		}
 	}
 	
 	validate_bool($manage_group)
