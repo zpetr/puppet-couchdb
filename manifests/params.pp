@@ -26,7 +26,7 @@ class couchdb::params {
 				'zlib-devel',
 				'openssl-devel',
 				'rubygem-rake',
-				'ruby-rdoc',
+				'rubygem-rdoc',
 				'help2man',
 				'texinfo'
 			]
