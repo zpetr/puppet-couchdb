@@ -6,9 +6,9 @@ class couchdb::params {
   }
   
   $src_dir	= '/usr/local/src/couchdb'
-  $git_rep			= '-b ssl-ec git://github.com/zpetr/build-couchdb.git'
+  $git_rep			= '-b ssl-ec https://github.com/zpetr/build-couchdb.git'
   $git_rep_recursive = false
-  $couchdb_git		= 'git://git.apache.org/couchdb.git'
+  $couchdb_git		= 'https://git.apache.org/couchdb.git'
 
   if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon' {
     $user                 = 'couchdb'
@@ -26,12 +26,12 @@ class couchdb::params {
 				'zlib-devel',
 				'openssl-devel',
 				'rubygem-rake',
-				'ruby-rdoc',
+				'rubygem-rdoc',
 				'help2man',
 				'texinfo'
 			]
 	$otp_options = "erl_checkout=\"tags/OTP-17.1\""
-	if $::operatingsystemmajrelease > 5 {
+	if 0 + $::operatingsystemmajrelease > 5 {
 		$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\" erl_cflags=\"-DOPENSSL_NO_EC=1\""
 	} else {
 		$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\""
