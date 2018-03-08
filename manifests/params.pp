@@ -31,7 +31,7 @@ class couchdb::params {
 				'texinfo'
 			]
 	$otp_options = "erl_checkout=\"tags/OTP-17.1\""
-	if $::operatingsystemmajrelease > 5 {
+	if 0 + $::operatingsystemmajrelease > 5 {
 		$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\" erl_cflags=\"-DOPENSSL_NO_EC=1\""
 	} else {
 		$otp_compability_options = "erl_checkout=\"tags/OTP_R14B04\""
