@@ -15,7 +15,7 @@
 
 ##Overview
 
-The couchdb module installs, configures, and manages the [CouchDB](http://couchdb.apache.org/ "CouchDB") instances on any CouchDB version starting from *1.2.0*.
+The couchdb module installs, configures, and manages the [CouchDB](http://couchdb.apache.org/ "CouchDB") instances on any CouchDB version of 1.x branch (2.x is not supported by this version) starting from *1.2.0* to *1.7.1* (version *1.6.2* is prefered and installed by default).
 
 Installation is based on [jhs/build-couchdb](https://github.com/jhs/build-couchdb "build-couchdb") builder.
 
