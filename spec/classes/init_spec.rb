@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe 'couchdb' do
-  let(:facts) do
-    {
-      :osfamily => 'Debian' ,
-      :operatingsystem => 'Linux' 
-    }
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
+      it { is_expected.to compile }
+      it { is_expected.to contain_couchdb() }
+      it { is_expected.to contain_couchdb_instance('main') }
   end
-  it { is_expected.to compile }
 end
