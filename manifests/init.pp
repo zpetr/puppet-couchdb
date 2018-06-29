@@ -57,7 +57,7 @@ class couchdb (
     file { [$couchdb_src_dir,"${couchdb_src_dir}/dependencies"]:
         ensure => 'directory',
     }
-    $recursive_string = str2bool($::couchdb::params::git_rep_recursive) ? {
+    $recursive_string = $::couchdb::params::git_rep_recursive ? {
         true  => '--recursive',
         false => ''
     }

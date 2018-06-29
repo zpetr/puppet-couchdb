@@ -8,10 +8,10 @@ class couchdb::params {
     $servername = $::hostname
   }
 
-  $src_dir    = '/usr/local/src/couchdb'
-  $git_rep            = 'https://github.com/zpetr/build-couchdb.git'
+  $src_dir = '/usr/local/src/couchdb'
+  $git_rep = 'https://github.com/zpetr/build-couchdb.git'
   $git_rep_recursive = false
-  $couchdb_git        = 'https://github.com/apache/couchdb.git'
+  $couchdb_git = 'https://github.com/apache/couchdb.git'
 
   if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon' {
     $user                 = 'couchdb'
