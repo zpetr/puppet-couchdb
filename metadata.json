@@ -1,6 +1,6 @@
 {
   "name": "zpetr-couchdb",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0",
   "author": "zpetr",
   "summary": "CouchDB installation and management",
   "license": "Apache-2.0",
