@@ -6,6 +6,7 @@ describe 'couchdb' do
       let(:facts) do
         facts
       end
+      let(:root_home) { '/root' }
 
       it { is_expected.to compile }
       it { is_expected.to contain_couchdb }
