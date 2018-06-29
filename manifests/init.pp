@@ -38,7 +38,6 @@ class couchdb (
             package { $pkg: ensure => 'installed' }
         }
     }
-    validate_bool($manage_group)
     $couchdb_group = $manage_group ? {
         true  => $group,
         false => $::couchdb::params::root_group
@@ -46,7 +45,6 @@ class couchdb (
     group { $group:
         ensure  => present,
     }
-    validate_bool($manage_user)
     $couchdb_user = $manage_user ? {
         true  => $user,
         false => 'root'
