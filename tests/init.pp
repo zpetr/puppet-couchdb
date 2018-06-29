@@ -10,4 +10,4 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 include couchdb
-couchdb::instance { "main": }
+couchdb::instance { 'main': }
